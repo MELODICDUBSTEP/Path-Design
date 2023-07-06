@@ -9,7 +9,7 @@ import random
 ### START CODE HERE ###
 # This code block is optional. You can define your utility function and class in this block if necessary.
 
-MAX_A_STAR_NUM = 50
+MAX_A_STAR_NUM = 70
 
 COLS = ROWS = 120
 
@@ -19,10 +19,10 @@ PUNISH_3 = 1.6
 PUNISH_4 = 1.15
 
 F_iterate = 0.1
-F = 1.5
+F = 1.8
 
-Staright_reward1 = 0.60
-Staright_reward2 = 0.9
+Staright_reward1 = 0.55
+Staright_reward2 = 0.95
 class node:
     def __init__(self, f, g, h):
         self.f = f
