@@ -13,17 +13,16 @@ MAX_A_STAR_NUM = 50
 
 COLS = ROWS = 120
 
-PUNISH_1 = 2
-PUNISH_2 = 1.2
-PUNISH_3 = 1.1
-PUNISH_4 = 1.02
+PUNISH_1 = 4
+PUNISH_2 = 2.3
+PUNISH_3 = 1.6
+PUNISH_4 = 1.15
 
-
-F = 0.58
+F_iterate = 0.1
+F = 1.5
 
 Staright_reward1 = 0.65
-Staright_reward2 = 0.98
-
+Staright_reward2 = 0.95
 class node:
     def __init__(self, f, g, h):
         self.f = f
@@ -61,13 +60,13 @@ def setpunish(current_map, nodes):
                     for t in direction:
                         if i + s >= 0 and i + s < 120 and j + t >= 0 and j + t < 120:
                             if l1(i, j, i + s, j + t) == 1:
-                                nodes[i + s][j + t].p *= PUNISH_1
+                                nodes[i + s][j + t].p = PUNISH_1
                             elif l1(i, j, i + s, j + t) == 2:
-                                nodes[i + s][j + t].p *= PUNISH_2
+                                nodes[i + s][j + t].p = PUNISH_2
                             elif l1(i, j, i + s, j + t) == 3:
-                                nodes[i + s][j + t].p *= PUNISH_3
+                                nodes[i + s][j + t].p = PUNISH_3
                             elif l1(i, j, i + s, j + t) == 4:
-                                nodes[i + s][j + t].p *= PUNISH_4
+                                nodes[i + s][j + t].p = PUNISH_4
     
 
 ###  END CODE HERE  ###
@@ -326,8 +325,7 @@ def A_star(current_map, current_pos, goal_pos):
                         nodes[x - 1][y - 1].move = 'down_left'
                         if(nodes[x][y].l + 1 >= 10):
                             break
-                        
-    
+                    
     path = []
     path_x = []
     path_y = []
@@ -348,7 +346,7 @@ def A_star(current_map, current_pos, goal_pos):
     for x_value in path_x:
         path2.append([x_value, getnode(fitfunction, len(path_x), x_value)])
     print(path2)
-    return path2
+    return path
     ###  END CODE HERE  ###
 
 def reach_goal(current_pos, goal_pos):
