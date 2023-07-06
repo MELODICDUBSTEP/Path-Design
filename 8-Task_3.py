@@ -21,8 +21,8 @@ PUNISH_4 = 1.15
 F_iterate = 0.1
 F = 1.5
 
-Staright_reward1 = 0.65
-Staright_reward2 = 0.95
+Staright_reward1 = 0.60
+Staright_reward2 = 0.9
 class node:
     def __init__(self, f, g, h):
         self.f = f
@@ -346,7 +346,8 @@ def A_star(current_map, current_pos, goal_pos):
     for x_value in path_x:
         path2.append([x_value, getnode(fitfunction, len(path_x), x_value)])
     print(path2)
-    return path
+    path3 = [path[0], path[len(path) - 1]]
+    return path3
     ###  END CODE HERE  ###
 
 def reach_goal(current_pos, goal_pos):
